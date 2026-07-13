@@ -1,0 +1,22 @@
+{
+    "customers":[
+        {
+            "name":"املاکی مختاری",
+            "address":"اصفهان چارباغ بالا",
+            "images":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vnD2QIpgJoM_PlRNkOBokOz1b5mPwV-gmdYj1FB918pGnwbgXHPDKG5x&s=10","https://nanoacrylic.ir/wp-content/uploads/2022/04/c7584365f991ea6236fd1f19653f06a2-1024x851.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9j4pT3VfGs2VNcrb2VhN4Q08kT-wMuWUdHEUUimmQ6YxHGNQhzpSMUBR&s=10"],
+            "phoneNumber":"09131111123"
+        },
+        {
+            "name":"املاکی حسینی",
+            "address":"اصفهان چارباغ پایین",
+            "images":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vnD2QIpgJoM_PlRNkOBokOz1b5mPwV-gmdYj1FB918pGnwbgXHPDKG5x&s=10","https://nanoacrylic.ir/wp-content/uploads/2022/04/c7584365f991ea6236fd1f19653f06a2-1024x851.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9j4pT3VfGs2VNcrb2VhN4Q08kT-wMuWUdHEUUimmQ6YxHGNQhzpSMUBR&s=10"],
+            "phoneNumber":"09131111111"
+        },
+        {
+            "name":"املاکی محمدی",
+            "address":"اصفهان پل خواجو",
+            "images":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vnD2QIpgJoM_PlRNkOBokOz1b5mPwV-gmdYj1FB918pGnwbgXHPDKG5x&s=10","https://nanoacrylic.ir/wp-content/uploads/2022/04/c7584365f991ea6236fd1f19653f06a2-1024x851.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9j4pT3VfGs2VNcrb2VhN4Q08kT-wMuWUdHEUUimmQ6YxHGNQhzpSMUBR&s=10"],
+            "phoneNumber":"09131111125"
+        }
+    ]
+}
