@@ -18,5 +18,52 @@
             "images":["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vnD2QIpgJoM_PlRNkOBokOz1b5mPwV-gmdYj1FB918pGnwbgXHPDKG5x&s=10","https://nanoacrylic.ir/wp-content/uploads/2022/04/c7584365f991ea6236fd1f19653f06a2-1024x851.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb9j4pT3VfGs2VNcrb2VhN4Q08kT-wMuWUdHEUUimmQ6YxHGNQhzpSMUBR&s=10"],
             "phoneNumber":"09131111125"
         }
+    ],
+
+    "real-states":[
+        {
+            "id":1,
+            "image":"./images/home.jpg",
+            "title":"آپارتمان سعادت آباد",
+            "location":"سعادت آباد، تهران، کوچه...",
+            "area":"سعادت آباد",
+            "bedrooms":"2 خواب",
+            "parking":"1 پارکینگ",
+            "price":"45000000",
+            "period":"ماهانه"
+        },
+        {
+            "id":2,
+            "image":"./images/home.jpg",
+            "title":"آپارتمان زعفرانیه ",
+            "location":"سعادت آباد، تهران، کوچه...",
+            "area":"زعفرانیه",
+            "bedrooms":"2 خواب",
+            "parking":"1 پارکینگ",
+            "price":"45000000",
+            "period":"ماهانه"
+        },
+        {
+            "id":3,
+            "image":"./images/home.jpg",
+            "title":"آپارتمان  نیاوران",
+            "location":"سعادت آباد، تهران، کوچه...",
+            "area":"نیاوران",
+            "bedrooms":"2 خواب",
+            "parking":"1 پارکینگ",
+            "price":"45000000",
+            "period":"ماهانه"
+        },
+        {
+            "id":4,
+            "image":"./images/home.jpg",
+            "title":"آپارتمان  کامرانیه",
+            "location":"سعادت آباد، تهران، کوچه...",
+            "area":"کامرانیه",
+            "bedrooms":"2 خواب",
+            "parking":"1 پارکینگ",
+            "price":"45000000",
+            "period":"ماهانه"
+        }
     ]
 }

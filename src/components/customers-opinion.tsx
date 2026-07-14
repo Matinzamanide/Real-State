@@ -3,7 +3,7 @@ import { useState } from "react";
 const testimonials = [
   {
     name: "امین حسینی",
-    text: "اطلاعات دقیق و تسلط عالی به بازار املاک اصفهان. داشت امتح به سودمانس معرّف می‌کنم",
+    text: "اطلاعات دقیق و تسلط عالی به بازار املاک اصفهان. حتماً به دوستانم معرفی می‌کنم",
   },
   {
     name: "سارا محمدی",
@@ -68,12 +68,7 @@ function ArrowLeft() {
       viewBox="0 0 24 24"
       stroke="currentColor"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15 19l-7-7 7-7"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
     </svg>
   );
 }
@@ -87,12 +82,7 @@ function ArrowRight() {
       viewBox="0 0 24 24"
       stroke="currentColor"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 5l7 7-7 7"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
     </svg>
   );
 }
@@ -119,21 +109,17 @@ export default function TestimonialsSection() {
     : testimonials;
 
   return (
-    <section
-      dir="rtl"
-      className="min-h-screen bg-gray-50 px-4 py-16 font-sans"
-    >
+    // 👇 تغییر اصلی اینجاست: حذف min-h-screen و جایگزینی با py-16
+    <section dir="rtl" className="py-16 bg-gray-50 px-4 font-sans">
       {/* عنوان بخش */}
       <div className="mb-14 text-center">
-        <h2 className="text-4xl font-extrabold text-gray-900">
-          نظر مشتریان
-        </h2>
+        <h2 className="text-4xl font-extrabold text-gray-900">نظر مشتریان</h2>
         <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-amber-400"></div>
       </div>
 
       {/* کانتینر اصلی */}
       <div className="relative mx-auto max-w-6xl">
-        {/* دکمه‌های ناوبری - فقط وقتی اسلاید است نمایش داده می‌شود */}
+        {/* دکمه‌های ناوبری */}
         {isSlider && (
           <>
             <button
@@ -162,9 +148,7 @@ export default function TestimonialsSection() {
           {visibleTestimonials.map((item, index) => (
             <div
               key={index}
-              className={`transition-all duration-500 ${
-                isSlider ? "animate-fadeIn" : ""
-              }`}
+              className={`transition-all duration-500 ${isSlider ? "animate-fadeIn" : ""}`}
             >
               <TestimonialCard
                 name={item.name}
@@ -197,18 +181,10 @@ export default function TestimonialsSection() {
       {/* استایل انیمیشن */}
       <style>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateX(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
+          from { opacity: 0; transform: translateX(20px); }
+          to { opacity: 1; transform: translateX(0); }
         }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out;
-        }
+        .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
       `}</style>
     </section>
   );

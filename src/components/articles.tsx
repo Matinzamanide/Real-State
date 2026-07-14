@@ -81,7 +81,7 @@ const PopularArticles = () => {
   const canGoPrev = currentIndex > 0;
 
   return (
-    <section className="w-full py-12 md:py-8 bg-gray-50" dir="rtl">
+    <section className="w-full bg-gray-50" dir="rtl">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">

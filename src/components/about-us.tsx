@@ -31,7 +31,7 @@ const ContactSection = () => {
               <div className="md:w-1/2 w-full space-y-6">
                 {/* Address */}
                 <div className="flex items-center gap-4">
-                  <FaMapMarkerAlt className="text-3xl md:text-4xl text-[#FFB53F] flex-shrink-0" />
+                  <FaMapMarkerAlt className="text-3xl md:text-4xl text-[#FFB53F] shrink-0" />
                   <span className="text-base md:text-lg text-gray-800 font-medium">
                     اصفهان/چهارباغ عباسی/بازار ملت
                   </span>
@@ -39,7 +39,7 @@ const ContactSection = () => {
 
                 {/* Phone */}
                 <div className="flex items-center gap-4">
-                  <FaPhone className="text-3xl md:text-4xl text-[#FFB53F] flex-shrink-0" />
+                  <FaPhone className="text-3xl md:text-4xl text-[#FFB53F] shrink-0" />
                   <span className="text-base md:text-lg text-gray-800 font-medium" dir="ltr">
                     09133252130
                   </span>
@@ -47,7 +47,7 @@ const ContactSection = () => {
 
                 {/* Instagram */}
                 <div className="flex items-center gap-4">
-                  <FaInstagram className="text-3xl md:text-4xl text-[#FFB53F] flex-shrink-0" />
+                  <FaInstagram className="text-3xl md:text-4xl text-[#FFB53F] shrink-0" />
                   <span className="text-base md:text-lg text-gray-800 font-medium" dir="ltr">
                     @jambrs.ir
                   </span>
@@ -55,7 +55,7 @@ const ContactSection = () => {
 
                 {/* Website */}
                 <div className="flex items-center gap-4">
-                  <FaGlobe className="text-3xl md:text-4xl text-[#FFB53F] flex-shrink-0" />
+                  <FaGlobe className="text-3xl md:text-4xl text-[#FFB53F] shrink-0" />
                   <span className="text-base md:text-lg text-gray-800 font-medium" dir="ltr">
                     www.jambrs.ir
                   </span>
