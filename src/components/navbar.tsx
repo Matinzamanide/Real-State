@@ -47,7 +47,7 @@ function Navbar() {
       <header
         className={`fixed w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#182338]/95 backdrop-blur-lg shadow-2xl py-3"
+            ? "bg-[#182338]/95 backdrop-blur-lg shadow-2xl py-5"
             : "bg-gradient-to-b from-[#182338] to-[#1a2744] py-5"
         }`}
       >

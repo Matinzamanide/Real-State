@@ -1,3 +1,6 @@
+import AboutPage from "../pages/about/page";
+import DashboardLayout from "../pages/admin/dashboard";
+import LoginPage from "../pages/admin/login";
 import Article from "../pages/article/page";
 import Articles from "../pages/articles/articles";
 import Home from "../pages/Home/home";
@@ -17,7 +20,19 @@ export const routes=[
         element:<Articles/>
     },
     {
-        path:"/مقالات/:id",
+        path:"/admin/login",
+        element:<LoginPage/>
+    },
+    {
+        path:"/about",
+        element:<AboutPage/>
+    },
+    {
+        path:"/admin/dashboard",
+        element:<DashboardLayout/>
+    },
+    {
+        path:"مقالات/:id",
         element:<Article/>
     },
 ]

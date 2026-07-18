@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export interface ArticleCardProps {
   id: string | number;
@@ -37,6 +38,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   };
 
   return (
+    <Link to={`/مقالات/${title}`}>
     <div
       className={`flex-shrink-0 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 ${className}`}
       style={{ width: cardWidth }}
@@ -114,6 +116,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         </button>
       </div>
     </div>
+    </Link>
   );
 };
 

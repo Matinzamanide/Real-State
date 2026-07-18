@@ -21,7 +21,7 @@ function Footer() {
             <div className="border-b-4 lg:border-b-0 lg:border-l-4 border-gray-400 pb-8 lg:pb-0 flex flex-2 flex-col gap-6 items-center">
               <img
                 className="w-15"
-                src="./images/Rectangle.svg"
+                src="https://electroshahresfahan.com/images/Rectangle.svg"
                 alt=""
               />
               <p className="text-center text-gray-400">
