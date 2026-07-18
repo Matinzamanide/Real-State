@@ -20,7 +20,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   title,
   description,
   image,
-  category,
   date,
   readTime = `${5} مطالعه`,
   itemsPerView = 1,

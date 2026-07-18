@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+interface TestimonialCardProps {
+  name: string;
+  text: string;
+}
 
 const testimonials = [
   { name: "امین حسینی", text: "اطلاعات دقیق و تسلط عالی به بازار املاک اصفهان. حتماً به دوستانم معرفی می‌کنم" },
@@ -18,7 +22,7 @@ function UserIcon() {
   );
 }
 
-function TestimonialCard({ name, text }) {
+function TestimonialCard({ name, text }:TestimonialCardProps) {
   return (
     <div className="rounded-xl bg-white px-6 py-8 text-center transition-all duration-300 h-full shadow-md hover:shadow-xl border border-gray-100">
       <UserIcon />

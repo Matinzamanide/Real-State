@@ -1,3 +1,10 @@
+import type React from "react";
+
+interface ICard {
+    width: number;
+    height: number;
+    hasBorder?: boolean; // ? یعنی اختیاری
+}
 const MountainIcon = () => {
   return (
     <div className="relative w-32 h-32 flex items-center justify-center">
@@ -24,7 +31,7 @@ const MountainIcon = () => {
 };
 
 // کامپوننت کارت (قابل استفاده مجدد)
-const Card = ({ width, height, hasBorder = false }) => {
+const Card :React.FC<ICard> = ({ width, height, hasBorder = false }) => {
   return (
     <div
       className={`bg-[#182338] rounded-2xl flex items-center justify-center p-4 shadow-md ${
