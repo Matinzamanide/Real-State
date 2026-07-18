@@ -1,4 +1,5 @@
 import type { IChildren } from "../types/type";
+import Footer from "./footer";
 import Navbar from "./navbar";
 
 const Layout :React.FC<IChildren> = ({children}) => {
@@ -6,6 +7,7 @@ const Layout :React.FC<IChildren> = ({children}) => {
         <div className="">
             <Navbar/>
             {children}
+            <Footer/>
         </div>
      );
 }

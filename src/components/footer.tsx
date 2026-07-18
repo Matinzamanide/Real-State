@@ -12,7 +12,7 @@ function Footer() {
 
       <div className="relative w-full text-white ">
         <img
-          src="public/images/Rectangle.svg"
+          src="./images/Rectangle.svg"
           alt="background"
           className="absolute inset-0 w-full h-full object-cover object-top z-0 "
         />

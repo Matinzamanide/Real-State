@@ -20,3 +20,14 @@ export interface IVIPState{
 export interface IChildren{
     children:React.ReactNode;
 }
+
+
+export interface Article {
+    id: string | number;
+    title: string;
+    description: string;
+    image: string;
+    category: string;
+    date: string;
+    readTime: string;
+  }

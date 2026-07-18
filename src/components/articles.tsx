@@ -1,55 +1,90 @@
 import { useState, useEffect } from 'react';
+import ArticleCard from './article-card';
+import axios from 'axios';
+import type { Article } from '../types/type';
 
-const PopularArticles = () => {
+// تعریف نوع برای داده‌های مقالات
+
+
+export default function PopularArticles() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [itemsPerView, setItemsPerView] = useState(3);
 
-  const articles = [
-    {
-      id: 1,
-      image: './images/home.jpg',
-      date: '۱۴۰۳/۰۵/۱۵',
-      category: 'تحلیل بازار',
-      title: 'بهترین زمان خرید ملک در 1405 چه زمانی است؟',
-      description: 'بررسی روند قیمت ها، رفتار بازار و نکاتی که قبل از خرید باید بدانید...',
-    },
-    {
-      id: 2,
-      image: './images/home.jpg',
-      date: '۱۴۰۳/۰۵/۱۲',
-      category: 'تحلیل بازار',
-      title: 'بهترین زمان خرید ملک در 1405 چه زمانی است؟',
-      description: 'بررسی روند قیمت ها، رفتار بازار و نکاتی که قبل از خرید باید بدانید...',
-    },
-    {
-      id: 3,
-      image: './images/home.jpg',
-      date: '۱۴۰۳/۰۵/۰۸',
-      category: 'تحلیل بازار',
-      title: 'بهترین زمان خرید ملک در 1405 چه زمانی است؟',
-      description: 'بررسی روند قیمت ها، رفتار بازار و نکاتی که قبل از خرید باید بدانید...',
-    },
-    {
-      id: 4,
-      image: './images/home.jpg',
-      date: '۱۴۰۳/۰۴/۲۸',
-      category: 'سرمایه‌گذاری',
-      title: 'راهنمای کامل سرمایه‌گذاری در املاک تجاری',
-      description: 'نکات مهم و استراتژی‌های موفق برای ورود به بازار املاک تجاری...',
-    },
-    {
-      id: 5,
-      image: './images/home.jpg',
-      date: '۱۴۰۳/۰۴/۲۰',
-      category: 'مشاوره',
-      title: 'نکات کلیدی قبل از خرید آپارتمان نوساز',
-      description: 'چک‌لیست کامل بررسی‌های حقوقی و فنی قبل از امضای قرارداد...',
-    },
-  ];
+  // دریافت داده‌ها از API
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:8000/articles');
+        setArticles(response.data);
+        setError(null);
+      } catch (err) {
+        console.error('خطا در دریافت مقالات:', err);
+        setError('مشکلی در دریافت مقالات وجود دارد');
+        // داده‌های نمونه برای تست
+        setArticles([
+          {
+            id: 1,
+            image: '/images/home.jpg',
+            date: '۵ فروردین ۱۴۰۵',
+            category: 'تحلیل بازار',
+            title: 'بهترین زمان خرید ملک در 1405 چه زمانی است؟',
+            description: 'بررسی روند قیمت ها، رفتار بازار و نکاتی که قبل از خرید باید بدانید...',
+            readTime: '۵ دقیقه مطالعه',
+          },
+          {
+            id: 2,
+            image: '/images/home.jpg',
+            date: '۱۲ فروردین ۱۴۰۵',
+            category: 'تحلیل بازار',
+            title: 'راهنمای سرمایه‌گذاری در املاک تجاری',
+            description: 'نکات مهم و استراتژی‌های موفق برای ورود به بازار املاک تجاری...',
+            readTime: '۷ دقیقه مطالعه',
+          },
+          {
+            id: 3,
+            image: '/images/home.jpg',
+            date: '۸ فروردین ۱۴۰۵',
+            category: 'مشاوره',
+            title: 'نکات کلیدی قبل از خرید آپارتمان نوساز',
+            description: 'چک‌لیست کامل بررسی‌های حقوقی و فنی قبل از امضای قرارداد...',
+            readTime: '۴ دقیقه مطالعه',
+          },
+          {
+            id: 4,
+            image: '/images/home.jpg',
+            date: '۲۸ اسفند ۱۴۰۴',
+            category: 'سرمایه‌گذاری',
+            title: 'راهنمای کامل سرمایه‌گذاری در املاک مسکونی',
+            description: 'نکات مهم و استراتژی‌های موفق برای ورود به بازار املاک...',
+            readTime: '۶ دقیقه مطالعه',
+          },
+          {
+            id: 5,
+            image: '/images/home.jpg',
+            date: '۲۰ اسفند ۱۴۰۴',
+            category: 'مشاوره',
+            title: 'نکات کلیدی قبل از خرید خانه',
+            description: 'چک‌لیست کامل بررسی‌های حقوقی و فنی قبل از امضای قرارداد...',
+            readTime: '۳ دقیقه مطالعه',
+          },
+        ]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchArticles();
+  }, []);
+
+  // تنظیم تعداد آیتم در هر ویو بر اساس اندازه صفحه
   useEffect(() => {
     const updateItemsPerView = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 640) {
         setItemsPerView(1);
       } else if (window.innerWidth < 1024) {
         setItemsPerView(2);
@@ -63,132 +98,182 @@ const PopularArticles = () => {
     return () => window.removeEventListener('resize', updateItemsPerView);
   }, []);
 
+  const isSlider = articles.length > itemsPerView;
   const maxIndex = Math.max(0, articles.length - itemsPerView);
 
+  // منطق Autoplay
+  useEffect(() => {
+    if (!isSlider || isPaused || articles.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isSlider, isPaused, maxIndex, articles.length]);
+
   const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
+    if (articles.length === 0) return;
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
+    if (articles.length === 0) return;
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
-  const canGoNext = currentIndex < maxIndex;
-  const canGoPrev = currentIndex > 0;
+  // تابع برای مدیریت کلیک روی دکمه مطالعه مقاله
+  const handleReadMore = (articleId: string | number) => {
+    console.log('مطالعه مقاله با شناسه:', articleId);
+    // navigate(`/article/${articleId}`);
+  };
+
+  // نمایش مقالات فعلی
+  const visibleArticles = isSlider
+    ? articles.slice(currentIndex, currentIndex + itemsPerView)
+    : articles;
+
+  // نمایش حالت بارگذاری
+  if (loading) {
+    return (
+      <section dir="rtl" className="w-full bg-gray-50 py-16 px-4 font-sans">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#FFB53F]"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // نمایش خطا
+  if (error) {
+    return (
+      <section dir="rtl" className="w-full bg-gray-50 py-16 px-4 font-sans">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <p>{error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // اگر مقاله‌ای وجود نداشت
+  if (articles.length === 0) {
+    return (
+      <section dir="rtl" className="w-full bg-gray-50 py-16 px-4 font-sans">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="text-gray-500">هیچ مقاله‌ای یافت نشد</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="w-full bg-gray-50" dir="rtl">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section 
+      dir="rtl" 
+      className="w-full bg-gray-50 py-16 px-4 font-sans"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
+        <div className="mb-14 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900">
             مقالات پربازدید
           </h2>
-          <div className="relative inline-block">
-            <p className="text-sm sm:text-base md:text-lg text-gray-600">
-              جدید ترین مقالات و تحلیل های بازار املاک
-            </p>
-            <div className="absolute -bottom-2 md:-bottom-3 left-1/2 transform -translate-x-1/2 w-10 md:w-12 h-1 bg-[#FFB53F] rounded-full"></div>
-          </div>
+          <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-[#FFB53F]"></div>
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-600">
+            جدید ترین مقالات و تحلیل های بازار املاک
+          </p>
         </div>
 
         <div className="relative">
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            disabled={!canGoPrev}
-            className={`absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-2xl md:text-3xl rounded-full transition-all duration-300 ${
-              !canGoPrev
-                ? 'opacity-30 cursor-not-allowed text-gray-400'
-                : 'opacity-100 text-gray-700 hover:bg-gray-100'
-            }`}
-          >
-            ‹
-          </button>
+          {/* دکمه‌های ناوبری */}
+          {isSlider && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute -right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-all duration-300 hover:bg-[#FFB53F] hover:text-white text-gray-700"
+                aria-label="قبلی"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute -left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-lg transition-all duration-300 hover:bg-[#FFB53F] hover:text-white text-gray-700"
+                aria-label="بعدی"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </>
+          )}
 
-          <button
-            onClick={nextSlide}
-            disabled={!canGoNext}
-            className={`absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-2xl md:text-3xl rounded-full transition-all duration-300 ${
-              !canGoNext
-                ? 'opacity-30 cursor-not-allowed text-gray-400'
-                : 'opacity-100 text-gray-700 hover:bg-gray-100'
-            }`}
-          >
-            ›
-          </button>
+          {/* گرید کارت‌ها */}
+          <div className={`grid grid-cols-1 gap-6 md:gap-8 ${
+            itemsPerView === 1 ? 'md:grid-cols-1' : 
+            itemsPerView === 2 ? 'md:grid-cols-2' : 
+            'md:grid-cols-3'
+          }`}>
+            {visibleArticles.map((article, index) => (
+              <div 
+                key={`${article.id}-${index}`} 
+                className="transition-all duration-500 animate-fadeIn"
+              >
+                <ArticleCard
+                  {...article}
+                  itemsPerView={1}
+                  onReadMore={handleReadMore}
+                />
+              </div>
+            ))}
+          </div>
 
-          {/* Cards */}
-          <div className="overflow-hidden mx-6 md:mx-12">
-            <div
-              className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
-              style={{
-                transform: `translateX(${currentIndex * (100 / itemsPerView)}%)`,
-              }}
-            >
-              {articles.map((article) => (
-                <div
-                  key={article.id}
-                  className="flex-shrink-0 bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100"
-                  style={{
-                    width: `calc(${100 / itemsPerView}% - ${((itemsPerView - 1) * (itemsPerView === 1 ? 0 : 24)) / itemsPerView}px)`,
-                  }}
-                >
-                  {/* Image */}
-                  <div className="relative">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-40 sm:h-48 md:h-52 object-cover"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-4 md:p-5">
-                    {/* Meta */}
-                    <div className="flex justify-between items-center mb-2 md:mb-3 text-xs text-gray-500">
-                      <span>{article.category}</span>
-                      <span>{article.date}</span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2 md:mb-3 leading-relaxed line-clamp-2">
-                      {article.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-xs md:text-sm text-gray-500 leading-5 md:leading-6 mb-3 md:mb-4 line-clamp-2">
-                      {article.description}
-                    </p>
-
-                    {/* Read More */}
-                    <a
-                      href="#"
-                      className="inline-flex items-center gap-2 text-xs md:text-sm font-bold text-[#182338] hover:text-[#FFB53F] transition-colors"
-                    >
-                      <span>مطالعه مقاله</span>
-                      <span className="text-base md:text-lg">←</span>
-                    </a>
-                  </div>
-                </div>
+          {/* دکمه‌های راهنما */}
+          {isSlider && (
+            <div className="mt-8 flex justify-center gap-2">
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? "bg-[#FFB53F] w-6" : "bg-gray-300 w-2 hover:bg-gray-400"
+                  }`}
+                  aria-label={`اسلاید ${index + 1}`}
+                />
               ))}
             </div>
+          )}
+
+          {/* دکمه مشاهده همه مقالات */}
+          <div className="text-center mt-10 md:mt-12">
+            <button className="bg-[#182338] text-white px-8 py-2.5 md:px-12 md:py-3 rounded-md font-medium text-sm md:text-lg hover:bg-opacity-90 transition-colors duration-300">
+              مشاهده همه مقالات
+            </button>
           </div>
         </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-10 md:mt-12">
-          <button className="bg-[#182338] text-white px-8 py-2.5 md:px-12 md:py-3 rounded-md font-medium text-sm md:text-lg hover:bg-opacity-90 transition-colors duration-300">
-            مشاهده همه مقالات
-          </button>
-        </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { 
+            opacity: 0; 
+            transform: translateY(20px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        .animate-fadeIn { 
+          animation: fadeIn 0.5s ease-out; 
+        }
+      `}</style>
     </section>
   );
-};
-
-export default PopularArticles;
+}

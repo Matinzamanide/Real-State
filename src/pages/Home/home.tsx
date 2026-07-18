@@ -5,7 +5,6 @@ import SpecialCustomers from "../../components/special-customers";
 import VIPState from "../../components/vip-state";
 import HeroSection from "../../components/hero-section";
 import FAQ from "../../components/faq";
-import Footer from "../../components/footer";
 import Information from "../../components/information";
 
 const Home = () => {
@@ -20,7 +19,6 @@ const Home = () => {
         <FAQ/>
         <PopularArticles/>
         <Information/>
-        <Footer/>
         </>
      );
 }
